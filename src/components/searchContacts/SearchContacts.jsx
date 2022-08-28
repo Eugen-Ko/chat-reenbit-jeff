@@ -30,7 +30,6 @@ export const SearchContacts = () => {
   }, [debouncedSearch]);
 
   useEffect(() => {
-    console.log(query);
     setState(query);
   }, [query]);
 
