@@ -16,10 +16,11 @@ export const ContactList = () => {
     if (sort.length) {
       setSortContactList(
         sort
-          .sort(
-            (a, b) =>
-              Date.parse(b.history[b.history.length - 1].date) -
-              Date.parse(a.history[a.history.length - 1].date)
+          .sort((a, b) =>
+            a.history.length && b.history.length
+              ? Date.parse(b.history[b.history.length - 1].date) -
+                Date.parse(a.history[a.history.length - 1].date)
+              : 0
           )
           .filter(contact => contact.name.includes(query))
       );
@@ -36,6 +37,21 @@ export const ContactList = () => {
           sortContactList.map(contact => {
             return <ContactItem key={nanoid()} contact={contact} />;
           })}
+        {query !== '' && (
+          <>
+            <hr />
+            <ContactItem
+              key={nanoid()}
+              contact={{
+                id: nanoid(),
+                name: query,
+                avatar: 'noname',
+                isOnline: 'true',
+                history: [],
+              }}
+            />
+          </>
+        )}
       </ContactListContainer>
     </>
   );

@@ -53,6 +53,11 @@ const dbState = createReducer(cardInitialState, {
   [dbActions.clearCurrentContactSuccess]: (state, { payload }) => {
     return { ...state, currentContact: null, query: '' };
   },
+  [dbActions.createContactSuccess]: (state, { payload }) => {
+    const newState = { ...state, contacts: [...state.contacts, payload] };
+    updateLocalStorage(newState);
+    return { ...newState };
+  },
 });
 
 // const loading = createReducer(false, {

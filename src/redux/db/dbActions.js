@@ -6,7 +6,10 @@ const setCurrentContactSuccess = createAction('db/setCurrentContactSuccess');
 const setQuerySuccess = createAction('db/setQuerySuccess');
 const sendMessageSuccess = createAction('db/sendMessageSuccess');
 const sendMessageReceiveSuccess = createAction('db/sendMessageReceiveSuccess');
-const clearCurrentContactSuccess = createAction('db/clearCurrentContactSuccess');
+const clearCurrentContactSuccess = createAction(
+  'db/clearCurrentContactSuccess'
+);
+const createContactSuccess = createAction('db/createContactSuccess');
 
 const dbActions = {
   initialContactsSuccess,
@@ -15,5 +18,6 @@ const dbActions = {
   sendMessageSuccess,
   sendMessageReceiveSuccess,
   clearCurrentContactSuccess,
+  createContactSuccess,
 };
 export default dbActions;

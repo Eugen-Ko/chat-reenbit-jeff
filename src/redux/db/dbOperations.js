@@ -37,6 +37,10 @@ const clearCurrentContact = () => dispatch => {
   dispatch(dbActions.clearCurrentContactSuccess());
 };
 
+const createContact = contact => dispatch => {
+  dispatch(dbActions.createContactSuccess(contact));
+};
+
 const dbOperations = {
   initialContacts,
   setCurrentContact,
@@ -44,6 +48,7 @@ const dbOperations = {
   sendMessage,
   sendMessageReceive,
   clearCurrentContact,
+  createContact,
 };
 
 export default dbOperations;

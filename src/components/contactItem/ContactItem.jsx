@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   ContactItemContainer,
   ContactItemNickName,
@@ -6,16 +6,23 @@ import {
   DataTime,
 } from 'styles/styles';
 import { Avatar } from 'components/avatar';
-import { dbOperations } from 'redux/db';
+import { dbOperations, dbSelectors } from 'redux/db';
 import { getFormatDate } from 'helpers/helpers';
 
 export const ContactItem = ({ contact }) => {
   const { name, isOnline, avatar, history } = contact;
-  const { message, date } = history[history.length - 1];
+  const { message, date } = history.length
+    ? history[history.length - 1]
+    : { message: '', date: new Date() };
 
   const dispatch = useDispatch();
+  const allContacts = useSelector(dbSelectors.getContacts);
 
   const onClick = () => {
+    if (!allContacts.filter(el => el.id === contact.id).length) {
+      dispatch(dbOperations.createContact(contact));
+      dispatch(dbOperations.setQuery(''));
+    }
     dispatch(dbOperations.setCurrentContact(contact));
   };
 
