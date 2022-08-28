@@ -2,9 +2,9 @@ import { Layout } from 'components/layout';
 // import { GoogleLogin } from 'react-google-login';
 
 export const App = () => {
-  const responseGoogle = response => {
-    console.log(response);
-  };
+  // const responseGoogle = response => {
+  //   console.log(response);
+  // };
 
   return (
     <div>

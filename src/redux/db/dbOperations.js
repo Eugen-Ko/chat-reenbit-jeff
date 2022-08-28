@@ -28,7 +28,7 @@ const sendMessageReceive = id => async dispatch => {
     setTimeout(
       () =>
         dispatch(dbActions.sendMessageReceiveSuccess({ id, message, date })),
-      5000
+      10000
     );
   } catch (err) {}
 };
